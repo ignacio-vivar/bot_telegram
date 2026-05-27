@@ -1,5 +1,4 @@
 import os
-import asyncio
 from requests_oauthlib import OAuth1Session
 from schemas.food_response import FatSecretRoot, FoodEntry
 from utils.get_today import get_today
