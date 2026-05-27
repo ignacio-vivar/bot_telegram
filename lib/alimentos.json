@@ -1,0 +1,132 @@
+[
+  {
+    "nombre_limpio": "Zanahoria",
+    "aliases": ["zanahoria", "zanahorias", "carrots"],
+    "food_id": "36320",
+    "serving_id": "59051",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Tomate",
+    "aliases": ["tomate", "tomates", "tomate crudo", "tomatoes"],
+    "food_id": "6138",
+    "serving_id": "54818",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Pechuga de Pollo",
+    "aliases": [
+      "pechuga",
+      "pollo",
+      "pechuga de pollo",
+      "pechuga al horno",
+      "chicken breast"
+    ],
+    "food_id": "1643",
+    "serving_id": "50323",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Papa al Horno",
+    "aliases": ["papa", "papa al horno", "papas", "baked potato"],
+    "food_id": "5721",
+    "serving_id": "54401",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Huevo Duro",
+    "aliases": ["huevo duro", "hard boiled egg", "hd"],
+    "food_id": "33798",
+    "serving_id": "29453",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Huevo Cocido",
+    "aliases": ["huevo común", "egg", "hplancha"],
+    "food_id": "3094",
+    "serving_id": "11942",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Queso Crema Tonadita",
+    "aliases": ["Queso Crema", "QC", "Tonadita", "Verde"],
+    "food_id": "68190145",
+    "serving_id": "55856323",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Café",
+    "aliases": ["cafe", "cafecito", "taza de cafe", "mug"],
+    "food_id": "7331",
+    "serving_id": "27699",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Muslo de Pollo (sin piel)",
+    "aliases": ["muslo", "muslo de pollo", "muslo sin piel", "pata muslo"],
+    "food_id": "1679",
+    "serving_id": "50359",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Arroz Blanco Cocido",
+    "aliases": ["arroz", "arroz blanco", "arroz cocido", "porcion arroz"],
+    "food_id": "55265517",
+    "serving_id": "46410843",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Leiva Tostadas de Arroz",
+    "aliases": [
+      "tostadas de arroz",
+      "tostada",
+      "galleta de arroz",
+      "leiva salada"
+    ],
+    "food_id": "14870054",
+    "serving_id": "14065338",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Patas de Pollo",
+    "aliases": ["patas de pollo", "pata de pollo", "pata", "patitas al horno"],
+    "food_id": "20687363",
+    "serving_id": "19448702",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Banana",
+    "aliases": ["banana", "bananas", "plátano"],
+    "food_id": "10810289",
+    "serving_id": "10297808",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Locro",
+    "aliases": ["locro", "plato de locro", "porcion locro"],
+    "food_id": "7648359",
+    "serving_id": "7370266",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Empanadas de Jamón y Queso",
+    "aliases": ["empanada jyq", "empanadas jyq", "empanada jamon y queso"],
+    "food_id": "6996515",
+    "serving_id": "6758823",
+    "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Queso Cremoso Cerutti",
+    "aliases": ["queso cremoso", "cremoso", "queso cerutti"],
+    "food_id": "78945724",
+    "serving_id": "63895585",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Manzana Verde",
+    "aliases": ["manzana verde", "manzana", "apple"],
+    "food_id": "6624446",
+    "serving_id": "6410094",
+    "unit_type": "g"
+  }
+]
