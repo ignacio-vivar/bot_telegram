@@ -7,7 +7,6 @@ from services.get_today_food import get_today_food
 load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 MI_ID = int(os.getenv("TELEGRAM_ID"))
 
 DES = "Breakfast"
