@@ -35,6 +35,9 @@ async def get_today_food() -> list[FoodEntry]:
         # Pydantic valida y limpia el JSON automáticamente acá
         validated_data = FatSecretRoot(**raw_data)
         
+        if validated_data.food_entries is None:
+            return []
+        
         entradas = validated_data.food_entries.food_entry
         
         # Normalizamos para devolver siempre una lista, incluso si hay 1 sola comida

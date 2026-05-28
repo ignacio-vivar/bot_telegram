@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Union
+from typing import List, Optional, Union
 
 class FoodEntry(BaseModel):
     food_entry_name: str
@@ -14,4 +14,4 @@ class FoodEntriesResponse(BaseModel):
     food_entry: Union[List[FoodEntry], FoodEntry] 
 
 class FatSecretRoot(BaseModel):
-    food_entries: FoodEntriesResponse
+    food_entries: Optional[FoodEntriesResponse] = None
