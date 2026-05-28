@@ -128,5 +128,11 @@
     "food_id": "6624446",
     "serving_id": "6410094",
     "unit_type": "g"
+  },
+  {
+    "nombre_limpio": "Locro",
+    "food_id": "7648359",
+    "serving_id": "7370266",
+    "unit_type": "g"
   }
 ]
