@@ -1,4 +1,6 @@
 import os
+from contextlib import asynccontextmanager
+from fastapi import FastAPI, Request, Response, status
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
 from dotenv import load_dotenv
@@ -7,6 +9,7 @@ from services.get_today_food import get_today_food
 load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 MI_ID = int(os.getenv("TELEGRAM_ID"))
 
 DES = "Breakfast"
@@ -121,21 +124,46 @@ async def ver_resumen_hoy(update: Update, context: ContextTypes.DEFAULT_TYPE) ->
     await update.message.reply_text(texto_respuesta)
 
 
-def main() -> None:
-    """Configuración y arranque del bot por Polling."""
-    print("Iniciando el bot por Polling...")
+telegram_app = Application.builder().token(TOKEN).build()
+
+telegram_app.add_handler(CommandHandler("des", registrar_desayuno))
+telegram_app.add_handler(CommandHandler("alm", registrar_almuerzo))
+telegram_app.add_handler(CommandHandler("cen", registrar_cena))
+telegram_app.add_handler(CommandHandler("me", registrar_merienda))
+
+telegram_app.add_handler(CommandHandler("ftoday", ver_resumen_hoy))
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await telegram_app.initialize()
+    await telegram_app.start()
+    await telegram_app.bot.set_webhook(url=WEBHOOK_URL)
+    print(f"Webhook configurado en: {WEBHOOK_URL}")
+    yield  
+    await telegram_app.bot.delete_webhook()
+    await telegram_app.stop()
+    await telegram_app.shutdown()
+
+
+app = FastAPI(lifespan=lifespan)
+
+
+
+@app.get("/")
+def read_root():
+    """Endpoint de Hola Mundo / Healthcheck para el Cron de Render."""
+    return {
+        "status": "online",
+        "message": "FastAPI operando correctamente"
+    }
+
+@app.post("/webhook")
+async def webhook_endpoint(request: Request):
+    """Endpoint donde Telegram impactará los mensajes vía Webhook."""
+    if telegram_app.running:
+        json_data = await request.json()
+        update = Update.de_json(json_data, telegram_app.bot)
+        await telegram_app.process_update(update)
+        return Response(status_code=status.HTTP_200_OK)
     
-    telegram_app = Application.builder().token(TOKEN).build()
-
-    # Registrás tus comandos
-    telegram_app.add_handler(CommandHandler("des", registrar_desayuno))
-    telegram_app.add_handler(CommandHandler("alm", registrar_almuerzo))
-    telegram_app.add_handler(CommandHandler("cen", registrar_cena))
-    telegram_app.add_handler(CommandHandler("me", registrar_merienda))
-    telegram_app.add_handler(CommandHandler("ftoday", ver_resumen_hoy))
-
-    # Arranca a escuchar mensajes de forma directa
-    telegram_app.run_polling(drop_pending_updates=True)
-
-if __name__ == "__main__":
-    main()
+    return Response(status_code=status.HTTP_503_SERVICE_UNAVAILABLE)
