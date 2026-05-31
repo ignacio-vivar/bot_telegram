@@ -18,15 +18,17 @@ fatsecret_user = OAuth1Session(CLIENT_ID,
                                resource_owner_secret=USER_SECRET)
 
 
-
 async def post_food(meal_sel: str, quantity: str, input_food: str ) -> None:
     api_url = "https://platform.fatsecret.com/rest/food-entries/v1"
+
+    
+
 
     delta_days = get_today()
 
     food_data = buscar_alimento_en_catalogo(input_food)
     if not food_data:
-        return "not_found"
+        return "not_found", ""
 
     quantity = str(float(quantity))
    
@@ -43,10 +45,15 @@ async def post_food(meal_sel: str, quantity: str, input_food: str ) -> None:
 
     try:
         response = fatsecret_user.post(api_url, params=params)
+        print(f"Status: {response.status_code}")
+        print(f"Body: {response.text}")
         if response.status_code == 200:
+            data = response.json()
+            if "error" in data:
+                return "not_post", ""
             unidad = getattr(food_data, "unit_type", "")
             return "ok", unidad
         else:
-            return "not_post"
+            return "not_post", ""
     except Exception:
-        return "failed"
+        return "failed", ""

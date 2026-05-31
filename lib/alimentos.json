@@ -129,10 +129,19 @@
     "serving_id": "6410094",
     "unit_type": "g"
   },
+
   {
-    "nombre_limpio": "Locro",
-    "food_id": "7648359",
-    "serving_id": "7370266",
-    "unit_type": "g"
+    "nombre_limpio": "Milanesa de Pollo al Horno (Unidad) Nacho",
+    "aliases": ["mila pollo", "milanga de pollo", "milanesa pollo"],
+    "food_id": "128120922",
+    "serving_id": "100525125",
+    "unit_type": "u"
+  },
+  {
+    "nombre_limpio": "Hellmann's Ketchup",
+    "aliases": ["ketchup", "colorado", "salsa roja"],
+    "food_id": "2281555",
+    "serving_id": "2232322",
+    "unit_type": "u"
   }
 ]

@@ -1,3 +1,4 @@
+import asyncio
 import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request, Response, status
@@ -30,7 +31,6 @@ async def procesar_comida(update: Update, context: ContextTypes.DEFAULT_TYPE, me
     
     texto_completo = " ".join(context.args)
     alimentos = [alimento.strip() for alimento in texto_completo.split(",")]
-
     mensaje_final = []
 
     for ind_alim in alimentos:
@@ -45,7 +45,8 @@ async def procesar_comida(update: Update, context: ContextTypes.DEFAULT_TYPE, me
         content = " ".join(fields_ind_alim[1:])
         
         estado, unidad = await post_food(meal_tag, quantity, content)
-        
+        await asyncio.sleep(1)
+
         if estado == "ok":
             mensaje_final.append(f"Agregado {quantity} {unidad} de {content} ")
         elif estado == "not_found":
